@@ -14,5 +14,13 @@ public class PageEntry implements Comparable<PageEntry> {
         return 0;
     }
 
+    public boolean isEmpty() {
+        return false;
+    }
+
+    public PageEntry toLowerCase() {
+        return null;
+    }
+
     // ???
 }

@@ -6,10 +6,12 @@ import java.util.Map;
 
 public class Main {
     private static Object pdf;
+    private static String pdfName;
 
     public static void main(String[] args) throws Exception {
         File var = null;
-        BooleanSearchEngine engine = new BooleanSearchEngine(new File("pdfs"), var, pdf);
+        int page = 100;
+        BooleanSearchEngine engine = new BooleanSearchEngine(new File("pdfs"), var, pdf, page, pdfName);
         System.out.println(engine.search("бизнес"));
         Map<String, Integer> freqs = new HashMap<>(); // мапа, где ключом будет слово, а значением - частота
         Object words = new Object();
