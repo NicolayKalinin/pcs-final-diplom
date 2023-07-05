@@ -15,7 +15,7 @@ public class BooleanSearchEngine implements SearchEngine {
 
     public BooleanSearchEngine(File pdfsDir, java.io.File pdf) throws IOException {
         doc = new PdfDocument(new PdfReader(this.pdf));
-        doc.getPage(100);
+        doc.getPage(0-100);
         int i = 101;
         var text = PdfTextExtractor.getTextFromPage(page(101));
         var words = text.split("\\P{IsAlphabetic}+");
@@ -40,6 +40,8 @@ public class BooleanSearchEngine implements SearchEngine {
             if (word.isEmpty()) {
                 continue;
             }
+            BooleanSearchEngine engine = new BooleanSearchEngine(new File("pdfs"), null, pdf, page, pdfName);;
+            System.out.println(engine.search("бизнес"));
             word = word.toLowerCase();
             freqs.put(word.toString(), freqs.getOrDefault(word, 0) + 1);
         }
