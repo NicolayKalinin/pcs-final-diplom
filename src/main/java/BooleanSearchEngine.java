@@ -8,10 +8,11 @@ import java.io.IOException;
 import java.util.*;
 
 public class BooleanSearchEngine implements SearchEngine {
-    private int page;
+    private static int count;
+    private static int page;
     private String pdf;
     PdfDocument doc;
-    private String pdfName;
+    private static String pdfName;
 
     public BooleanSearchEngine(File pdfsDir, java.io.File pdf) throws IOException {
         doc = new PdfDocument(new PdfReader(this.pdf));
@@ -32,6 +33,34 @@ public class BooleanSearchEngine implements SearchEngine {
         this.pdfName = pdfName;
     }
 
+    private BooleanSearchEngine(
+            @JsonProperty String pdfName,
+            @JsonProperty int page,
+            @JsonProperty int count
+    ) {
+        this.pdfName = pdfName;
+        this.page = page;
+        this.count = count;
+    }
+
+    public String getPdfName() {
+        return String.valueOf(Integer.parseInt(pdfName));
+    }
+    public int getPage() {
+        return page;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    @Override
+    public String toString() {
+        return "\n pdfName=" + pdfName +
+                "\n page=" + page +
+                "\n count=" + count;
+    }
+    
     @Override
     public List<PageEntry> search(String word) {
         List<PageEntry> words = new ArrayList<>();
@@ -40,12 +69,22 @@ public class BooleanSearchEngine implements SearchEngine {
             if (word.isEmpty()) {
                 continue;
             }
-            BooleanSearchEngine engine = new BooleanSearchEngine(new File("pdfs"), null, pdf, page, pdfName);;
+            BooleanSearchEngine engine = null;
+            try {
+                engine = new BooleanSearchEngineBuilder().setPdfs(new File("pdfs")).setVar(null).setPdf(pdf).setPage(page).setPdfName(pdfName).createBooleanSearchEngine();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            ;
             System.out.println(engine.search("бизнес"));
             word = word.toLowerCase();
             freqs.put(word.toString(), freqs.getOrDefault(word, 0) + 1);
         }
         // тут реализуйте поиск по слову
         return Collections.emptyList();
+    }
+
+    public String valueOf(int page) {
+        return null;
     }
 }

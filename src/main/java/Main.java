@@ -7,9 +7,9 @@ import java.util.Map;
 public class Main {
     private static Object pdf;
     private static String pdfName;
+    private static SearchEngine engine;
 
     public static void main(String[] args) throws Exception {
-        File var = null;
         int page = 100;
         BooleanSearchEngine engine = new BooleanSearchEngine(new File("pdfs"), null, pdf, page, pdfName);
         System.out.println(engine.search("бизнес"));
