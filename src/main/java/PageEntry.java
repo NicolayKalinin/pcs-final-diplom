@@ -1,3 +1,5 @@
+import org.json.JSONObject;
+
 public class PageEntry implements Comparable<PageEntry> {
     private final String pdfName;
     private final int page;
@@ -22,5 +24,13 @@ public class PageEntry implements Comparable<PageEntry> {
         return null;
     }
 
-    // ???
+    public String toString() {
+        String map = null;
+        JSONObject result = new JSONObject(map);
+        return "\nPageEntry {\n " +
+                "pgfName = '" + pdfName + "" +
+                ",\n page = " + page +
+                ",\n count = " + count +
+                "\n}";
+    }
 }

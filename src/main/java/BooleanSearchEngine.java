@@ -24,6 +24,10 @@ public class BooleanSearchEngine implements SearchEngine {
         // тк во время поиска сервер не должен уже читать файлы
     }
 
+    public BooleanSearchEngine(File pdfs) {
+
+    }
+
     private PdfPage page(int i) {
         return null;
     }
@@ -46,7 +50,7 @@ public class BooleanSearchEngine implements SearchEngine {
     public String getPdfName() {
         return String.valueOf(Integer.parseInt(pdfName));
     }
-    public int getPage() {
+    public static int getPage() {
         return page;
     }
 
@@ -75,7 +79,6 @@ public class BooleanSearchEngine implements SearchEngine {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            ;
             System.out.println(engine.search("бизнес"));
             word = word.toLowerCase();
             freqs.put(word.toString(), freqs.getOrDefault(word, 0) + 1);
