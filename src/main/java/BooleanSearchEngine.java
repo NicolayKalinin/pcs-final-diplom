@@ -28,6 +28,10 @@ public class BooleanSearchEngine implements SearchEngine {
 
     }
 
+    public BooleanSearchEngine() {
+
+    }
+
     private PdfPage page(int i) {
         return null;
     }
@@ -74,17 +78,16 @@ public class BooleanSearchEngine implements SearchEngine {
                 continue;
             }
             BooleanSearchEngine engine = null;
-            try {
-                engine = new BooleanSearchEngineBuilder().setPdfs(new File("pdfs")).setVar(null).setPdf(pdf).setPage(page).setPdfName(pdfName).createBooleanSearchEngine();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
             System.out.println(engine.search("бизнес"));
             word = word.toLowerCase();
             freqs.put(word.toString(), freqs.getOrDefault(word, 0) + 1);
         }
         // тут реализуйте поиск по слову
         return Collections.emptyList();
+    }
+
+    private Object setPdfs(File pdfs) {
+        return null;
     }
 
     public String valueOf(int page) {
