@@ -11,6 +11,7 @@ public class BooleanSearchEngine implements SearchEngine {
     private String pdf;
     PdfDocument doc;
     private String pdfName;
+    private List<PageEntry> pdfsDir;
 
     public BooleanSearchEngine(File pdfsDir) {
         pdfsDir = new File("C://Users//Николай Калинин//IdeaProjects//psc-final-diplom//pdfs");
@@ -133,18 +134,12 @@ public class BooleanSearchEngine implements SearchEngine {
 
     @Override
     public List<PageEntry> search(String word) {
-        List<PageEntry> words = new ArrayList<>();
         Map<String, Integer> freqs = new HashMap<>();
-        for (var word : words) {
-            if (word.isEmpty()) {
-                continue;
-            }
-            System.out.println(Main.engine.search("бизнес"));
             word = word.toLowerCase();
             freqs.put(word.toString(), freqs.getOrDefault(word, 0) + 1);
-        }
-        // тут реализуйте поиск по слову
-        return Collections.emptyList();
+        System.out.println(Main.engine.search("бизнес"));// тут реализуйте поиск по слову
+        List<PageEntry> Collections = pdfsDir;
+        return Collections;
     }
 
 }
