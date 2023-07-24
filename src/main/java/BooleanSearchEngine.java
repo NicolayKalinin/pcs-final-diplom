@@ -4,6 +4,7 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.canvas.parser.PdfTextExtractor;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
@@ -15,20 +16,121 @@ public class BooleanSearchEngine implements SearchEngine {
     private static String pdfName;
 
     public BooleanSearchEngine(File pdfsDir, java.io.File pdf) throws IOException {
-        doc = new PdfDocument(new PdfReader(this.pdf));
-        doc.getPage(0-100);
-        int i = 101;
-        var text = PdfTextExtractor.getTextFromPage(page(101));
-        var words = text.split("\\P{IsAlphabetic}+");
-        // прочтите тут все pdf и сохраните нужные данные,
+        File dir = new File("C://Users//Николай Калинин//IdeaProjects//psc-final-diplom//pdfs");
+        if (pdfsDir.isDirectory()) {
+            for (File item : pdfsDir.listFiles()) {
+
+                if (item.isDirectory()) {
+
+                    System.out.println(item.getName() + "  \t folder");
+                } else {
+
+                    System.out.println(item.getName() + "\t file");
+                }
+
+                try (FileReader reader = new FileReader("1. DevOps_MLops.pdf")) {
+                    int c;
+                    while ((c = reader.read()) != -1) {
+
+                        System.out.print((char) c);
+                    }
+                } catch (IOException ex) {
+
+                    System.out.println(ex.getMessage());
+                }
+            }
+            try (FileReader reader = new FileReader("Что такое блокчейн.pdf")) {
+                // читаем посимвольно
+                int c;
+                while ((c = reader.read()) != -1) {
+
+                    System.out.print((char) c);
+                }
+            } catch (IOException ex) {
+
+                System.out.println(ex.getMessage());
+            }
+        }
+        try (FileReader reader = new FileReader("Этапы оценки проекта_ понятия, методы и полезные инструменты.pdf")) {
+            int c;
+            while ((c = reader.read()) != -1) {
+
+                System.out.print((char) c);
+            }
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        try (FileReader reader = new FileReader("Продвижение игр.pdf")) {
+            int c;
+            while ((c = reader.read()) != -1) {
+
+                System.out.print((char) c);
+            }
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        try (FileReader reader = new FileReader("Как управлять рисками IT-проекта.pdf")) {
+            int c;
+            while ((c = reader.read()) != -1) {
+
+                System.out.print((char) c);
+            }
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        try (FileReader reader = new FileReader("SoftSkills.pdf")) {
+            int c;
+            while ((c = reader.read()) != -1) {
+
+                System.out.print((char) c);
+            }
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        try (FileReader reader = new FileReader("Облачные технологии, домен и кукис.pdf")) {
+            int c;
+            while ((c = reader.read()) != -1) {
+
+                System.out.print((char) c);
+            }
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        try (FileReader reader = new FileReader("СЦЕНА-ЭПИЗОД-АКТ.pdf")) {
+            int c;
+            while ((c = reader.read()) != -1) {
+
+                System.out.print((char) c);
+            }
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        try (FileReader reader = new FileReader("Технология распознавания лиц.pdf")) {
+            int c;
+            while ((c = reader.read()) != -1) {
+
+                System.out.print((char) c);
+            }
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+            // прочтите тут все pdf и сохраните нужные данные,
         // тк во время поиска сервер не должен уже читать файлы
+
+
+    public BooleanSearchEngine(File pdfs) throws IOException {
+
     }
 
-    public BooleanSearchEngine(File pdfs) {
-
-    }
-
-    public BooleanSearchEngine() {
+    public BooleanSearchEngine() throws IOException {
 
     }
 
@@ -36,7 +138,7 @@ public class BooleanSearchEngine implements SearchEngine {
         return null;
     }
 
-    public BooleanSearchEngine(File pdfs, File var, Object pdf, int page, String pdfName) {
+    public BooleanSearchEngine(File pdfs, File var, Object pdf, int page, String pdfName) throws IOException {
         this.page = page;
         this.pdfName = pdfName;
     }
@@ -45,7 +147,7 @@ public class BooleanSearchEngine implements SearchEngine {
             @JsonProperty String pdfName,
             @JsonProperty int page,
             @JsonProperty int count
-    ) {
+    ) throws IOException {
         this.pdfName = pdfName;
         this.page = page;
         this.count = count;
