@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
+    public static BooleanSearchEngine engine;
     private static Object pdf;
     private static String pdfName;
-    private static SearchEngine engine;
     private static PdfDocument getPage;
     private static int pdfPage;
 
